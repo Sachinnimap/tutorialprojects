@@ -1,8 +1,11 @@
 const express  =  require("express");
-const taskRoutes = require("./routes/taskRoutes.js")
+const task_route = require("./task/index")
 const app = express();
 
-app.use("/",taskRoutes)
+app.use("/",task_route)
+app.use((err,req,res,next)=>{
+    res.status(500).json({error:err})
+})
 
 PORT = 5000;
 
